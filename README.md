@@ -36,3 +36,40 @@ CLI 2.x vs CLI 3.x
   -2.x : 필요 X
 
   -3.x : 필요 O
+
+
+- this 자바스크립트에서는 기본적으로 전역 (window)를 가르킨다. 
+  ```java script
+    function(var a, var b){
+      console.log(this);
+      return a+b;
+    }
+    // 전역을 가르킴
+    console.log(this); 
+    // 전역을 가르킴
+  ```
+   ```java script
+    function Vue(el){
+      console.log(this);
+      this.el =el;
+    }
+    // 인스턴스를 정의한 객체 자체를 가르키게 됨
+  ```
+  비동기 처리에서 this
+   ```java script
+    console.log(this); //호출 전 =>vue 인스턴스가 호출
+    func()
+    .then(fuction(response){
+      console.log(this) // 호출 후 undefine => 현재 위치에서의 this를 벗어난 this 호출
+    })
+  ```
+  ```java script
+    console.log(this); //호출 전 =>vue 인스턴스가 호출
+    func()
+    .then(response=>
+      console.log(this) // 호출 후 undefine => 현재 위치에서의 this를 호출(vue 인스턴스)
+    )
+    
+  ```
+
+- 

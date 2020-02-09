@@ -7,7 +7,7 @@ import UserView from "../views/UserView.vue";
 import ItemView from "../views/ItemView";
 Vue.use(VueRouter);
 export const router = new VueRouter({
-  mode: history,
+  mode: 'history', 
   routes: [
     {
       path: "/",
