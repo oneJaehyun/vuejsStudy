@@ -73,3 +73,27 @@ CLI 2.x vs CLI 3.x
   ```
 
 - 
+```java script
+module.exports = {
+  ...
+  resolve: {
+  	...
+  	alias: {
+	  Utilities: path.resolve(__dirname, 'src/utilities/'),
+	  Templates: path.resolve(__dirname, 'src/templates/'),
+	  '@': path.resolve(__dirname, 'src/')
+  	}
+  }
+};
+```
+위처럼 Webpack의 설정 파일의 resolve.alias에 이름과 경로를 넣어주면 build할 때 Key의 이름을 해달 key에 매칭된 path로 바꿔서 build 해준다. 예를 들어서,
+```java script
+import main from '../../../main';
+import Utility from '../../../utilities/utility';
+```
+이런 식이었던 경로를,
+```java script
+import main from '@/main';
+import Utility from 'Utilities/utility';
+```
+이렇게 깔끔하게 바꿀 수 있다.

@@ -16,6 +16,12 @@ export default {
       .catch(error=>
       // eslint-disable-next-line no-console
       console.log(error))
+  },
+  methods : {
+    test(){
+      // eslint-disable-next-line no-console
+      return "hi";
+    }
   }
 };
 </script>
