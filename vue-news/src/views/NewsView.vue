@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div v-for="item in news" :key="item.id">{{item.title}}</div>
+  <div v-for="item in this.$store.state.news" :key="item.id">{{item.title}}</div>
 </div>
 </template>
 
