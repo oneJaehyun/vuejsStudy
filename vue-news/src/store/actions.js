@@ -3,7 +3,7 @@ import {
   fetchJobList,
   fetchAskList,
   fetchUserInfo,
-  fetchItemInfo
+  fetchCommnetItem
 } from "../api/index.js";
 
 export default {
@@ -44,7 +44,7 @@ export default {
       });
   },
   FETCH_ITEM({ commit }, id) {
-    fetchItemInfo(id)
+    fetchCommnetItem(id)
       .then(({ data }) => {
         commit("SET_ITEM", data);
       })

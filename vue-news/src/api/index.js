@@ -17,7 +17,7 @@ function fetchJobList() {
 function fetchUserInfo(userName) {
   return axios.get(`${config.baseUrl}user/${userName}.json`);
 }
-function fetchItemInfo(id) {
+function fetchCommnetItem(id) {
   return axios.get(`${config.baseUrl}item/${id}.json`);
 }
 export {
@@ -25,5 +25,5 @@ export {
   fetchAskList,
   fetchJobList,
   fetchUserInfo,
-  fetchItemInfo
+  fetchCommnetItem
 };
