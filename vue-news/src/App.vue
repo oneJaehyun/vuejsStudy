@@ -2,7 +2,9 @@
   <div id="app">
     <!-- kebob 으로 컴포넌트를 설정한다  클릭시 컴포넌트로 들어갈수 있다 -->
     <tool-bar></tool-bar>
-    <router-view></router-view>
+    <transition name="page">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -16,8 +18,16 @@ export default {
 </script>
 
 <style>
-body{
-  padding : 0; 
-  margin : 0;
+body {
+  padding: 0;
+  margin: 0;
+}
+/* Router Transition */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter, .page-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
