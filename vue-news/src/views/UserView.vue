@@ -1,19 +1,26 @@
 <template>
   <div>
-    <p>name : {{uesrInfo.id}}</p>
+    <user-profile :info="userInfo"></user-profile>
+    <!-- <p>name : {{uesrInfo.id}}</p>
     <p>karma : {{uesrInfo.karma}}</p>
-    <p>created : {{uesrInfo.created}}</p>
+    <p>created : {{uesrInfo.created}}</p>-->
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import UserProfile from "../components/UserProfile.vue";
+
 export default {
+  components: {
+    UserProfile
+  },
   computed: {
-    uesrInfo() {
+    userInfo() {
       return this.$store.state.user;
     }
   },
+
   created() {
     const userName = this.$route.params.id;
     this.$store.dispatch("FETCH_USER", userName);
