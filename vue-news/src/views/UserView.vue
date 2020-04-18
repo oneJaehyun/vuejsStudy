@@ -1,9 +1,10 @@
 <template>
   <div>
-    <user-profile :info="userInfo"></user-profile>
-    <!-- <p>name : {{uesrInfo.id}}</p>
-    <p>karma : {{uesrInfo.karma}}</p>
-    <p>created : {{uesrInfo.created}}</p>-->
+    <user-profile :info="userInfo">
+      <div slot="username">{{userInfo.id}}</div>
+      <span slot="time">{{"joined " +userInfo.created +"," }}</span>
+      <span slot="karma">{{userInfo.karma}}</span>
+    </user-profile>
   </div>
 </template>
 

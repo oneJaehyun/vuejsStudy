@@ -4,9 +4,15 @@
       <i class="fas fa-user"></i>
     </div>
     <div class="user-description">
-      <div>{{info.id}}</div>
-
-      <div class="time">{{info.created_time}}</div>
+      <slot name="username">
+        <!-- 상위 컴포넌트에서 정의할 영역 -->
+      </slot>
+      <span class="time">
+        <slot name="time">
+          <!-- 상위 컴포넌트에서 정의할 영역 -->
+        </slot>
+      </span>
+      <slot name="karma"></slot>
     </div>
   </div>
 </template>

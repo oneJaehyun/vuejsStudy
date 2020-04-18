@@ -10,22 +10,10 @@ import ListItem from "../components/ListItem";
 export default {
   components: {
     ListItem
+  },
+  created() {
+    this.$store.dispatch("FETCH_ASKS");
   }
-  // created() {
-  //   this.$store.dispatch("FETCH_ASKS");
-  // },
-  // computed: {
-  //   ...mapGetters(["fetchedAsk"])
-  // #2
-
-  //   ...mapState({
-  //     fetchedAsk : state =>state.asks
-  //   }),
-
-  //# 1
-  // ask(){
-  //   return this.$store.state.asks;
-  // }
 };
 </script>
 
