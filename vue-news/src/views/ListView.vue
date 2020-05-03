@@ -6,7 +6,11 @@
 
 <script>
 import ListItem from "../components/ListItem.vue";
-export default {};
+export default {
+  components: {
+    ListItem
+  }
+};
 </script>
 
 <style>
