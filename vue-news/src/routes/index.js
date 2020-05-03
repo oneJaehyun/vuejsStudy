@@ -5,38 +5,39 @@ import NewsView from "../views/NewsView.vue";
 import JobsView from "../views/JobsView.vue";
 import UserView from "../views/UserView.vue";
 import ItemView from "../views/ItemView";
+import createListView from "../views/CreateListVeiw";
 Vue.use(VueRouter);
 export const router = new VueRouter({
   mode: "history",
   routes: [
     {
       path: "/",
-      redirect: "/news"
+      redirect: "/news",
     },
     {
-      //path : url 주소
       path: "/news",
-      //component : url 주소로 갔을때 표시 될 컴포넌트
-      component: NewsView,
-      name: "news"
+      component: createListView("NewsView"),
+      name: "news",
     },
     {
       path: "/ask",
-      component: AskView,
-      name: "ask"
+      component: createListView("AskView"),
+
+      name: "ask",
     },
     {
       path: "/jobs",
-      component: JobsView,
-      name: "jobs"
+      component: createListView("JobsView"),
+
+      name: "jobs",
     },
     {
       path: "/item/:id",
-      component: ItemView
+      component: ItemView,
     },
     {
       path: "/user/:id",
-      component: UserView
-    }
-  ]
+      component: UserView,
+    },
+  ],
 });
