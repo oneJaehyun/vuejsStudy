@@ -3,16 +3,18 @@ import {
   fetchJobList,
   fetchAskList,
   fetchUserInfo,
-  fetchCommnetItem
+  fetchCommnetItem,
 } from "../api/index.js";
 
 export default {
-  FETCH_NEWS({ commit }) {
+  FETCH_NEWS(context) {
     fetchNewsList()
-      .then(({ data }) => {
-        commit("SET_NEWS", data);
+      .then((response) => {
+        console.log(response);
+        context.commit("SET_NEWS", response.data);
+        return response;
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   },
@@ -21,7 +23,7 @@ export default {
       .then(({ data }) => {
         commit("SET_JOBS", data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   },
@@ -30,7 +32,7 @@ export default {
       .then(({ data }) => {
         commit("SET_ASKS", data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   },
@@ -39,7 +41,7 @@ export default {
       .then(({ data }) => {
         commit("SET_USER", data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   },
@@ -48,8 +50,8 @@ export default {
       .then(({ data }) => {
         commit("SET_ITEM", data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
-  }
+  },
 };

@@ -6,12 +6,22 @@
 
 <script>
 import ListItem from "../components/ListItem";
+import bus from "../utils/bus.js";
 export default {
   components: {
     ListItem
   },
   created() {
-    this.$store.dispatch("FETCH_NEWS");
+    bus.$emit("start:spinner");
+
+    this.$store
+      .dispatch("FETCH_NEWS")
+      .then(() => {
+        bus.$emit("end:spinner");
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
 </script>
