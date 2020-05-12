@@ -6,23 +6,13 @@
 
 <script>
 import ListItem from "../components/ListItem";
-import bus from "../utils/bus.js";
-
+import ListMixin from "../mixins/ListMixins.js";
 export default {
   components: {
     ListItem
   },
-  created() {
-    bus.$emit("start:spinner");
-    this.$store
-      .dispatch("FETCH_JOBS")
-      .then(() => {
-        bus.$emit("end:spinner");
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+
+  mixins: [ListMixin]
 };
 </script>
 

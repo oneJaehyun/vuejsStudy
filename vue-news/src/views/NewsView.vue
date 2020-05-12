@@ -5,12 +5,13 @@
 </template>
 
 <script>
+import ListMixin from "../mixins/ListMixins.js";
 import ListItem from "../components/ListItem";
 export default {
   components: {
     ListItem
   },
-  created() {}
+  mixins: [ListMixin]
 };
 </script>
 
