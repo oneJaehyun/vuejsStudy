@@ -20,6 +20,7 @@ export default function createListView(name) {
     },
     // 재사용할 인스턴스(컴포넌트) 옵션들이 들어갈 자리
     render(createElement) {
+      console.log(createElement);
       return createElement(ListView);
     },
   };
