@@ -5,14 +5,15 @@
 </template>
 
 <script>
+import bus from "../utils/bus.js";
 import ListItem from "../components/ListItem";
+import ListMixin from "../mixins/ListMixins.js";
+
 export default {
   components: {
     ListItem
   },
-  created() {
-    this.$store.dispatch("FETCH_NEWS");
-  }
+  mixins: [ListMixin]
 };
 </script>
 

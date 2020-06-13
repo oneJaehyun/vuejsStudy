@@ -1,42 +1,78 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import AskView from "../views/AskView.vue";
-import NewsView from "../views/NewsView.vue";
-import JobsView from "../views/JobsView.vue";
 import UserView from "../views/UserView.vue";
 import ItemView from "../views/ItemView";
+import NewsView from "../views/NewsView";
+import bus from "../utils/bus.js";
+import { store } from "../store/index"
+import AskView from "../views/AskView";
+import JobsView from "../views/JobsView";
+
+//import createListView from "../views/CreateListVeiw";
 Vue.use(VueRouter);
 export const router = new VueRouter({
   mode: "history",
   routes: [
     {
       path: "/",
-      redirect: "/news"
+      redirect: "/news",
     },
     {
-      //path : url 주소
       path: "/news",
-      //component : url 주소로 갔을때 표시 될 컴포넌트
       component: NewsView,
-      name: "news"
+      beforeEnter: (to, from, next) => {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            next();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      name: "news",
     },
     {
       path: "/ask",
       component: AskView,
-      name: "ask"
+      beforeEnter: (to, from, next) => {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            next();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      name: "ask",
     },
     {
       path: "/jobs",
+      beforeEnter: (to, from, next) => {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            next();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
       component: JobsView,
-      name: "jobs"
+
+      name: "jobs",
     },
     {
       path: "/item/:id",
-      component: ItemView
+      component: ItemView,
     },
     {
       path: "/user/:id",
-      component: UserView
-    }
-  ]
+      component: UserView,
+    },
+  ],
 });

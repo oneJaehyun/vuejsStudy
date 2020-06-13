@@ -5,15 +5,11 @@
 </template>
 
 <script>
-import ListItem from "../components/ListItem";
-import ListMixin from "../mixins/ListMixins.js";
-
+import ListItem from "../components/ListItem.vue";
 export default {
   components: {
     ListItem
-  },
-
-  mixins: [ListMixin]
+  }
 };
 </script>
 

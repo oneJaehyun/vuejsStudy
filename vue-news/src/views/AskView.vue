@@ -7,13 +7,14 @@
 <script>
 import ListItem from "../components/ListItem";
 // import { mapState, mapGetters } from "vuex";
+
+import ListMixin from "../mixins/ListMixins.js";
 export default {
   components: {
     ListItem
   },
-  created() {
-    this.$store.dispatch("FETCH_ASKS");
-  }
+
+  mixins: [ListMixin]
 };
 </script>
 

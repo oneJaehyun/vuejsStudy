@@ -11,6 +11,7 @@
 <script>
 import axios from "axios";
 import UserProfile from "../components/UserProfile.vue";
+import bus from "../utils/bus.js";
 
 export default {
   components: {
@@ -24,7 +25,15 @@ export default {
 
   created() {
     const userName = this.$route.params.id;
-    this.$store.dispatch("FETCH_USER", userName);
+    bus.$emit("start:spinner");
+    this.$store
+      .dispatch("FETCH_USER", userName)
+      .then(() => {
+        bus.$emit("end:spinner");
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
 </script>
