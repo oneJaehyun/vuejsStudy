@@ -2,7 +2,13 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import UserView from "../views/UserView.vue";
 import ItemView from "../views/ItemView";
-import createListView from "../views/CreateListVeiw";
+import NewsView from "../views/NewsView";
+import bus from "../utils/bus.js";
+import { store } from "../store/index"
+import AskView from "../views/AskView";
+import JobsView from "../views/JobsView";
+
+//import createListView from "../views/CreateListVeiw";
 Vue.use(VueRouter);
 export const router = new VueRouter({
   mode: "history",
@@ -13,18 +19,50 @@ export const router = new VueRouter({
     },
     {
       path: "/news",
-      component: createListView("NewsView"),
+      component: NewsView,
+      beforeEnter: (to, from, next) => {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            next();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
       name: "news",
     },
     {
       path: "/ask",
-      component: createListView("AskView"),
-
+      component: AskView,
+      beforeEnter: (to, from, next) => {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            next();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
       name: "ask",
     },
     {
       path: "/jobs",
-      component: createListView("JobsView"),
+      beforeEnter: (to, from, next) => {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            next();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      component: JobsView,
 
       name: "jobs",
     },
