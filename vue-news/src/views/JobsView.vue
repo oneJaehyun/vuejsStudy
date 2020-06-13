@@ -7,6 +7,7 @@
 <script>
 import ListItem from "../components/ListItem";
 import ListMixin from "../mixins/ListMixins.js";
+
 export default {
   components: {
     ListItem
